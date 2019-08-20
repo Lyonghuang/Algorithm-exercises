@@ -1,1 +1,10 @@
 一些简单但有趣的算法题
+文件说明：
+sort.c:各种基础排序算法，包括快速排序，冒泡排序，选择排序，插入排序，堆排序，归并排序
+binarySearch.cpp:二分查找算法
+binaryTreeTraversal.cpp:二叉树遍历算法，包括前序遍历，中序遍历，后序遍历，层次遍历和蛇形遍历
+experssionEvalution.cpp:四则运算表达式求值算法
+inversionList.cpp:反转链表算法
+mergeOrderedList.cpp:合并两个有序链表的算法
+midNodeInList.cpp:求链表中间节点的算法
+ringInList.cpp:判断链表是否成环的算法
