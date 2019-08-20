@@ -6,7 +6,7 @@
 using namespace std;
 
 int calculate(char *expression);
-void deal(char op);
+void deal(char op, stack<int> &number);
 
 stack<char> letter;
 stack<int> number;
@@ -26,6 +26,12 @@ int main() {
 	return 0;
 }
 
+/*
+参数说明：
+*expression：字符数组指针，即字符串，应保证字符串为合法的四则运算表达式
+返回值：字符串表达式的计算结果
+时间复杂度：O(n)，n为表达式长度
+*/
 int calculate(char *expression) {
 	int indexIn = 0;
 	int cur = 0;
@@ -47,7 +53,7 @@ int calculate(char *expression) {
 			}
 			curCache = 0;
 			while (!letter.empty() && letter.top() != '(') {
-				deal(letter.top());
+				deal(letter.top(), number);
 				letter.pop();
 			}
 			letter.push(expression[indexIn]);
@@ -59,7 +65,7 @@ int calculate(char *expression) {
 			}
 			curCache = 0;
 			while (!letter.empty() && letter.top() != '(' && letter.top() != '+' && letter.top() != '-') {
-				deal(letter.top());
+				deal(letter.top(), number);
 				letter.pop();
 			}
 			letter.push(expression[indexIn]);
@@ -71,7 +77,7 @@ int calculate(char *expression) {
 			}
 			curCache = 0;
 			while (!letter.empty() && letter.top() != '(') {
-				deal(letter.top());
+				deal(letter.top(), number);
 				letter.pop();
 			}
 			letter.pop();
@@ -82,14 +88,22 @@ int calculate(char *expression) {
 	if (curCache) number.push(cur);
 
 	while (!letter.empty()) {
-		deal(letter.top());
+		deal(letter.top(), number);
 		letter.pop();
 	}
 
 	return number.top();
 }
 
-void deal(char op) {
+/*
+参数说明
+op：四则运算的四种运算符中的一种
+number：临时保存表达式中访问到的数组的栈
+返回值：无
+算法复杂度：O(1)
+函数功能额外说明：将临时保存数字的栈顶两个数字通过op运算符运算后再保存在栈顶
+*/
+void deal(char op, stack<int> &number) {
 	int number_1, number_2;
 
 	number_2 = number.top();

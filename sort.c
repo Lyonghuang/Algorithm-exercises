@@ -27,6 +27,14 @@ int main() {
 	return 0;
 }
 
+/*
+参数说明：
+*a：待排序的数组指针
+start：数组需要排序的区间起始值下标
+end：数组需要排序的区间的末尾值下标
+返回值：无
+时间复杂度：O(n*log(n))
+*/
 void quickSort(int *a, int start, int end){
 	int i = start;
 	int j = end;
@@ -49,6 +57,13 @@ void quickSort(int *a, int start, int end){
 	if (i < end) quickSort(a, i, end);
 }
 
+/*
+参数说明：
+*a：待排序的数组指针
+n：数组的元素数量
+返回值：无
+时间复杂度：O(n^2)
+*/
 void bubbleSort(int *a, int n) {
 	int temp;
 	for (int i = 0; i < n - 1; i++) {
@@ -62,6 +77,13 @@ void bubbleSort(int *a, int n) {
 	}
 }
 
+/*
+参数说明：
+*a：待排序的数组指针
+n：数组的元素数量
+返回值：无
+时间复杂度：O(n^2)
+*/
 void selectionSort(int *a, int n) {
 	int temp;
 	for (int i = 0; i < n; i++) {
@@ -77,6 +99,13 @@ void selectionSort(int *a, int n) {
 	}
 }
 
+/*
+参数说明：
+*a：待排序数组的指针
+n：数组的元素数量
+返回值：无
+时间复杂度：O(n^2)
+*/
 void insertSort(int *a, int n) {
 	int temp;
 	int p;
@@ -91,6 +120,14 @@ void insertSort(int *a, int n) {
 	}
 }
 
+/*
+参数说明：
+*a：待排序数组的指针
+start：待排序的数组区间起始值
+end：待排序的数组区间末尾值
+返回值：无
+时间复杂度：O(nlog(n))
+*/
 void mergeSort(int *a, int start, int end) {
 	int m = (start + end) / 2;
 	if (end - start > 1) {
@@ -125,6 +162,13 @@ void mergeSort(int *a, int start, int end) {
 	}
 }
 
+/*
+参数说明：
+*a：待排序数组的指针
+n：数组的元素数量
+返回值：无
+时间复杂度：O(nlog(n))
+*/
 void heapSort(int *a, int n) {
 	int t[100];
 	int p, q, temp;
