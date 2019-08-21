@@ -44,11 +44,11 @@ int main() {
 	printList(head);
 
 	printf("\n反转链表方法二：\n");
-	head = inversionList_1(head);
+	head = inversionList_2(head);
 	printList(head);
 
 	printf("\n反转链表方法三：\n");
-	head = inversionList_1(head);
+	head = inversionList_3(head);
 	printList(head);
 	return 0;
 }
@@ -94,32 +94,28 @@ node* inversionList_1(node *head) {
 }
 
 node* inversionList_2(node *head) {
-	node *re;
-	if (head == NULL) {
-		return NULL;
-	}
-	if (head->next != NULL) {
-		re = inversionList_2(head->next);
-		re->next = head;
-	}
-	else {
-		return head;
-	}
+	if (head == NULL || head->next == NULL) return head;
+
+	node *re = inversionList_2(head->next);
+	head->next->next = head;
+	head->next = NULL;
+	
 	return re;
 }
 
 node* inversionList_3(node *head) {
-	node *re;
-	node *p;
-	re = head;
-	if (head == NULL) {
-		return NULL;
+	if (head == NULL) return NULL;
+	node *re = head;
+	node *pre = NULL;
+	node *post = head->next;
+	
+	while (post != NULL) {
+		re->next = pre;
+		pre = re;
+		re = post;
+		post = post->next;
 	}
-	while (re->next != NULL) {
-		p = re;
-		re = re->next;
-		re->next = p;
-	}
+	re->next = pre;
 	return re;
 }
 
